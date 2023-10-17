@@ -113,6 +113,7 @@ body {
     transform: translate(-50%, -50%);
     border-radius: 25px;
     border: 7.5px solid #FFA9A9;
+    object-fit: contain;
     /*background-color: #FFFFFF;*/
   }
   

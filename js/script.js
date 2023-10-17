@@ -1,7 +1,7 @@
 const div1 = document.getElementById("div1");
 const div2 = document.getElementById("div2");
 const back = document.getElementById("back");
-const video = document.getElementById("video2");
+const video = document.getElementById("video");
 var timer = document.getElementById("activeTimer");
 
 // Go to sensor-based password
