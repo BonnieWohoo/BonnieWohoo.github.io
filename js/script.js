@@ -143,10 +143,11 @@ function checkPass(highestExpression){
     case keys[0]:
         // show that is it unlocking by changing switching the image
         // or get rid of the image
-        const catImg = document.createElement("img");
+
       if(highestExpression == password.ORANGECAT && currentImageId == "ORANGECAT"){
         catChildren[0].remove();
         // new cat image will be blue
+        const catImg = document.createElement("img");
         catImg.src = "../assets/thumbnails_blue_cat.png";
         catImg.setAttribute('id','blueCat');
         catImg.setAttribute('class','cat-2');
@@ -155,6 +156,7 @@ function checkPass(highestExpression){
     case keys[1]:
       if(highestExpression == password.BLUECAT && currentImageId == "BLUECAT"){
         catChildren[0].remove();
+        const catImg = document.createElement("img");
         catImg.src = "../assets/thumbnails_purple_cat.png";
         catImg.setAttribute('id','purpleCat');
         catImg.setAttribute('class','cat-3');
@@ -162,14 +164,14 @@ function checkPass(highestExpression){
       }
     case keys[2]:
       if(highestExpression == password.PURPLECAT && currentImageId == "PURPLECAT"){
-        // change the unlock image
+        // TO DO: change the unlock image
         const indicator = document.getElementsByClassName("indicator");
-        const indicatorChild = indicator[0];
-        indicatorChild.remove();
-        // delete the lock 
+        console.log(indicator);
+        const indicatorChild = indicator.children;
+        indicatorChild[0].remove();
         const newIndicator = document.createElement("i");
         newIndicator.setAttribute("class","fa-solid fa-unlock");
-        newIndicator.setAttribute("color","#ffffff");
+        //newIndicator.setAttribute("color","#ffffff");
         indicator.appendChild(newIndicator);
       }
   }
