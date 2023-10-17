@@ -6,9 +6,9 @@ var timer = document.getElementById("activeTimer");
 
 // PASSWORD TO UNLOCK
 const password = {
-  ORANGECAT: "angry",
+  ORANGECAT: "sad",
   BLUECAT: "happy",
-  PURPLECAT: "happy"
+  PURPLECAT: "surprised"
 }
 
 
@@ -77,29 +77,28 @@ function startVideo() {
   .catch((err) => alert(`${err.name} ${err.message}`));
 }
 
+// Function to detect highest expression
+function detectExpression(detections) {
+  let highestExpression = "Neutral"; // Default value
 
-// Function to detect this highest expression
-function detectExpression(detections){
-// Loop through the detected faces
-detections.forEach((result, i) => {
-  const expressions = result.expressions;
+  // Initialize the highest score to a lower value
+  let highestScore = -1;
 
-  // Find the expression with the highest score
-  let highestExpression = "Neutral";
-  let highestScore = expressions.neutral;
+  detections.forEach((result, i) => {
+    const expressions = result.expressions;
 
-  for (const expression in expressions) {
-    if (expressions[expression] > highestScore) {
-      highestExpression = expression;
-      highestScore = expressions[expression];
+    for (const expression in expressions) {
+      if (expressions[expression] > highestScore) {
+        highestExpression = expression;
+        highestScore = expressions[expression];
+      }
     }
-  }
+  });
 
-  // Write the expression with the highest score to the console
-  console.log(`Face ${i + 1} Highest Expression: ${highestExpression} (Score: ${highestScore})`);
+  // Return the single highest expression as a string
   return highestExpression;
-});
 }
+
 
 // Detects and draws on face your expression
 video.addEventListener('play', () => {
@@ -111,8 +110,10 @@ video.addEventListener('play', () => {
   setInterval(async () => {
     //const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
     const detectionsWithExpressions = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
-    highestExpression = detectExpression(detectionsWithExpressions);
-    checkPass(highestExpression);
+    const currentExpression = detectExpression(detectionsWithExpressions);
+    console.log(detectExpression(detectionsWithExpressions));
+    //console.log(currentExpression);
+    checkPass(currentExpression);
     //const resizedDetections = faceapi.resizeResults(detections, displaySize)
     //canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     //faceapi.draw.drawDetections(canvas, resizedDetections)
@@ -121,14 +122,57 @@ video.addEventListener('play', () => {
   }, 1000)
 })
 
+// takes in highestExpression
 function checkPass(highestExpression){
   // get the cat image container
-  const currentCat = document.getElementById("cat-container");
-  const catChildren = currentCat.children;
-  const currentImageId = catChildren[0].id.toUpperCase;
-  console.log(currentImageId);
+  const catContainer = document.getElementById("cat-container");
+  const catChildren = catContainer.children;
+  const currentImageId = catChildren[0].id.toUpperCase();
+  //console.log(currentImageId);
   // there should only be one child image at the time
   // TO DO: Check the ID name to the preset dictionary
+
+// problem, if you smile one of the expressions, it chanages
+// you have to check the photo in the div? 
+
+  const keys = Object.keys(password);
+  switch(currentImageId){
+    // the password is orange, blue, purple, so do the next colour cat, except for 
+
+
+    case keys[0]:
+        // show that is it unlocking by changing switching the image
+        // or get rid of the image
+        const catImg = document.createElement("img");
+      if(highestExpression == password.ORANGECAT && currentImageId == "ORANGECAT"){
+        catChildren[0].remove();
+        // new cat image will be blue
+        catImg.src = "../assets/thumbnails_blue_cat.png";
+        catImg.setAttribute('id','blueCat');
+        catImg.setAttribute('class','cat-2');
+        catContainer.appendChild(catImg);
+      }
+    case keys[1]:
+      if(highestExpression == password.BLUECAT && currentImageId == "BLUECAT"){
+        catChildren[0].remove();
+        catImg.src = "../assets/thumbnails_purple_cat.png";
+        catImg.setAttribute('id','purpleCat');
+        catImg.setAttribute('class','cat-3');
+        catContainer.appendChild(catImg);
+      }
+    case keys[2]:
+      if(highestExpression == password.PURPLECAT && currentImageId == "PURPLECAT"){
+        // change the unlock image
+        const indicator = document.getElementsByClassName("indicator");
+        const indicatorChild = indicator[0];
+        indicatorChild.remove();
+        // delete the lock 
+        const newIndicator = document.createElement("i");
+        newIndicator.setAttribute("class","fa-solid fa-unlock");
+        newIndicator.setAttribute("color","#ffffff");
+        indicator.appendChild(newIndicator);
+      }
+  }
 }
 
 
