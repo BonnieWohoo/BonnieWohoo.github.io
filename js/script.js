@@ -4,6 +4,14 @@ const back = document.getElementById("back");
 const video = document.getElementById('video');
 var timer = document.getElementById("activeTimer");
 
+// PASSWORD TO UNLOCK
+const password = {
+  ORANGECAT: "angry",
+  BLUECAT: "happy",
+  PURPLECAT: "happy"
+}
+
+
 // Go to sensor-based password
 document.addEventListener("DOMContentLoaded", function () {
   div1.addEventListener("click", function () {
@@ -16,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
 
 // Go back to lock screen
 document.addEventListener("DOMContentLoaded", function () {
@@ -70,6 +77,8 @@ function startVideo() {
   .catch((err) => alert(`${err.name} ${err.message}`));
 }
 
+
+// Function to detect this highest expression
 function detectExpression(detections){
 // Loop through the detected faces
 detections.forEach((result, i) => {
@@ -88,6 +97,7 @@ detections.forEach((result, i) => {
 
   // Write the expression with the highest score to the console
   console.log(`Face ${i + 1} Highest Expression: ${highestExpression} (Score: ${highestScore})`);
+  return highestExpression;
 });
 }
 
@@ -101,7 +111,8 @@ video.addEventListener('play', () => {
   setInterval(async () => {
     //const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
     const detectionsWithExpressions = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
-    detectExpression(detectionsWithExpressions);
+    highestExpression = detectExpression(detectionsWithExpressions);
+    checkPass(highestExpression);
     //const resizedDetections = faceapi.resizeResults(detections, displaySize)
     //canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     //faceapi.draw.drawDetections(canvas, resizedDetections)
@@ -110,6 +121,15 @@ video.addEventListener('play', () => {
   }, 1000)
 })
 
+function checkPass(highestExpression){
+  // get the cat image container
+  const currentCat = document.getElementById("cat-container");
+  const catChildren = currentCat.children;
+  const currentImageId = catChildren[0].id.toUpperCase;
+  console.log(currentImageId);
+  // there should only be one child image at the time
+  // TO DO: Check the ID name to the preset dictionary
+}
 
 
 
