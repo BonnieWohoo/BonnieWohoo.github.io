@@ -40,6 +40,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+// Function to detect and draw on faces based on expression
+async function checkFaces() {
+  const detectionsWithExpressions = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions();
+  const currentExpression = detectExpression(detectionsWithExpressions);
+  console.log(currentExpression);
+  checkPass(currentExpression);
+}
+
+
 // Function to start the timer
 function startTimer() {
   var sec = 30;
@@ -56,6 +66,7 @@ function startTimer() {
       document.getElementsByClassName("indicator")[0].style.backgroundColor = "red";
       clearInterval(timer);
     }
+    checkFaces();
   }, 1000);
 }
 
@@ -81,8 +92,7 @@ function startVideo() {
   .catch((err) => alert(`${err.name} ${err.message}`));
 }
 
-
-// Function to stop video, not sure if we really need this
+// Function to stop video, not sure if we will use this
 function stopVideo(videoElem) {
   const stream = videoElem.srcObject;
   const tracks = stream.getTracks();
@@ -127,16 +137,6 @@ function detectExpression(detections) {
   // Return the single highest expression as a string
   return highestExpression;
 }
-
-// Detects and draws on face your expression
-video.addEventListener('play', () => {
-  setInterval(async () => {
-    const detectionsWithExpressions = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
-    const currentExpression = detectExpression(detectionsWithExpressions);
-    console.log(detectExpression(detectionsWithExpressions));
-    checkPass(currentExpression);
-  }, 1000)
-})
 
 // takes in highestExpression and checks if it matches the password
 function checkPass(highestExpression){
