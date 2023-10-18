@@ -12,6 +12,10 @@ const password = {
   PURPLECAT: "surprised"
 }
 
+const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+const timeOptions = {hour:'numeric', minute:'numeric', hour12: false}
+
+updateDateTime();
 
 // Go to sensor-based password
 document.addEventListener("DOMContentLoaded", function () {
@@ -37,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       div1.classList.add("active");
     }
     resetPass();
+    updateDateTime();
   });
 });
 
@@ -183,6 +188,11 @@ function checkPass(highestExpression){
   }
 }
 
+function updateDateTime() {
+  // Get the current date
+  const currentDate = new Date();
 
-
-
+  // Get the HTML element with the ID "date"
+  document.getElementById("date").innerHTML = currentDate.toLocaleDateString('en-us', dateOptions);
+  document.getElementById("time").innerHTML = currentDate.toLocaleTimeString('en-us', timeOptions);
+}
