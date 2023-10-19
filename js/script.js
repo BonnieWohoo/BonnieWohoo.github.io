@@ -106,19 +106,21 @@ function resetPass(){
   console.log("Reseting pass");
   isUnlocked = false;
   const catContainer = document.getElementById("cat-container");
-  const catChildren = catContainer.children;
-  catChildren[0].remove();
-  const catImg = document.createElement("img");
-  catImg.src = "../assets/thumbnails_orange_cat.png";
-  catImg.setAttribute('id','orangeCat');
-  catImg.setAttribute('class','cat-1');
-  catContainer.appendChild(catImg);
-  const indicator = document.getElementsByClassName("indicator")[0];
-  indicator.children[0].remove();
-  const newIndicator = document.createElement("i");
-  newIndicator.setAttribute("class","fa-solid fa-lock");
-  indicator.style.backgroundColor = "#FFA9A9";
-  indicator.appendChild(newIndicator);
+    const catChildren = catContainer.children;
+    if(catChildren.length > 0){
+      catChildren[0].remove();
+    }
+    const catImg = document.createElement("img");
+    catImg.src = "../assets/thumbnails_orange_cat.png";
+    catImg.setAttribute('id','orangeCat');
+    catImg.setAttribute('class','cat-1');
+    catContainer.appendChild(catImg);
+    const indicator = document.getElementsByClassName("indicator")[0];
+    indicator.children[0].remove();
+    const newIndicator = document.createElement("i");
+    newIndicator.setAttribute("class","fa-solid fa-lock");
+    indicator.style.backgroundColor = "#FFA9A9";
+    indicator.appendChild(newIndicator);
 }
 
 // Function to detect highest expression
@@ -173,6 +175,10 @@ function checkPass(highestExpression){
     case keys[2]:
       if(highestExpression == password.PURPLECAT && currentImageId == "PURPLECAT"){
         catChildren[0].remove();
+        const unlockImg = document.createElement("img");
+        unlockImg.src = "../assets/thumbnails_unlock.png";
+        unlockImg.setAttribute('id', 'unlock');
+        unlockImg.setAttribute('class','cat');
         const indicator = document.getElementsByClassName("indicator")[0];
         console.log(indicator);
         const indicatorChild = indicator.children;
