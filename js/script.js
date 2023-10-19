@@ -3,7 +3,7 @@ const div2 = document.getElementById("div2");
 const back = document.getElementById("back");
 const video = document.getElementById('video');
 var timer = document.getElementById("activeTimer");
-var unlocked = false;
+var isUnlocked = false;
 
 // PASSWORD TO UNLOCK
 const password = {
@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
 // Go back to lock screen
 document.addEventListener("DOMContentLoaded", function () {
   back.addEventListener("click", function () {
-    stopTimer();
     if(div2.classList.contains("active")) {
       div2.classList.remove("active");
       div2.classList.add("inactive");
       div1.classList.remove("inactive");
       div1.classList.add("active");
     }
+    stopTimer();
     resetPass();
     updateDateTime();
   });
@@ -58,6 +58,7 @@ async function checkFaces() {
 // Function to start the timer
 function startTimer() {
   var sec = 30;
+
   timer = setInterval(function () {
     if (sec > 9) {
       document.getElementById("activeTimer").innerHTML = "Timer: 0:" + sec;
@@ -72,13 +73,16 @@ function startTimer() {
       clearInterval(timer);
     }
     checkFaces();
+    if(isUnlocked){
+      clearInterval(timer);
+    }
   }, 1000);
 }
 
 // Function to stop the timer
 function stopTimer() {
   clearInterval(timer);
-  document.getElementById("activeTimer").innerHTML = "Timer: 0:30"
+  document.getElementById("activeTimer").innerHTML = "Timer: 0:30";
 }
 
 // Load in all the models
@@ -97,29 +101,22 @@ function startVideo() {
   .catch((err) => alert(`${err.name} ${err.message}`));
 }
 
-// Function to stop video, not sure if we will use this
-function stopVideo(videoElem) {
-  const stream = videoElem.srcObject;
-  const tracks = stream.getTracks();
-
-  tracks.forEach((track) => {
-    track.stop();
-  });
-
-  videoElem.srcObject = null;
-}
-
 // Function to reset the password 
 function resetPass(){
+  console.log("Reseting pass");
+  isUnlocked = false;
   const catContainer = document.getElementById("cat-container");
-  const catChildren = catContainer.children;
-  catChildren[0].remove();
-  // reset image to orange
   const catImg = document.createElement("img");
   catImg.src = "../assets/thumbnails_orange_cat.png";
   catImg.setAttribute('id','orangeCat');
   catImg.setAttribute('class','cat-1');
   catContainer.appendChild(catImg);
+  const indicator = document.getElementsByClassName("indicator")[0];
+  indicator.children[0].remove();
+  const newIndicator = document.createElement("i");
+  newIndicator.setAttribute("class","fa-solid fa-lock");
+  indicator.style.backgroundColor = "#FFA9A9";
+  indicator.appendChild(newIndicator);
 }
 
 // Function to detect highest expression
@@ -180,10 +177,10 @@ function checkPass(highestExpression){
         indicatorChild[0].remove();
         const newIndicator = document.createElement("i");
         newIndicator.setAttribute("class","fa-solid fa-unlock");
-        newIndicator.setAttribute("color","#green");
-        indicator.appendChild(newIndicator);
+        //newIndicator.setAttribute("color","#green");
         indicator.style.backgroundColor = "green";
-        unlocked = true;
+        indicator.appendChild(newIndicator);
+        isUnlocked = true;
       }
   }
 }
