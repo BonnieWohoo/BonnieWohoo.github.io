@@ -5,195 +5,211 @@ body {
     box-sizing: border-box;
   }
   
-  /* Lockscreen */
-  .container-1 {
-    width: 293.76px;
-    height: 607.68px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url("https://cdn.glitch.global/bf9133ca-973f-4957-9df7-2e96ed716640/iOS_wallpaper.jpg?v=1697404036616");
-    background-size: cover;
-    border-radius: 25px;
-    border: 10px solid #000000;
-    text-align: center;
-    color: #FFFFFF;
+/* Lockscreen */
+.container-1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("./assets/thumbnails_iOS_wallpaper.jpg");
+  background-size: cover;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.container-1 p {
+  margin: 0;
+  padding: 0;
+}
+
+.container-1 .text {
+  margin-top: 75px;
+}
+
+.container-1 .text-1 {
+  font-size: 1rem;
+}
+
+.container-1 .text-2 {
+  font-size: 4rem;
+}
+
+.container-1 .design-1 {
+  width: 90px;
+  height: 25px;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  background-color: #000000;
+}
+
+.container-1 .design-2 {
+  width: 110px;
+  height: 5px;
+  position: absolute;
+  top: 98%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  background-color: #FFFFFF;
+  transition: transform 500ms ease-in-out;
+}
+
+.container-1:hover {
+  cursor: pointer;
+}
+
+.container-1:hover .design-2 {
+  transform: translate(-50%, -10px);
+}
+
+/* Sensor-based Lockscreen */
+.container-2 {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFC5C5;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.container-2 img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container-2 .design-1 {
+  width: 90px;
+  height: 25px;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  background-color: #000000;
+}
+
+.container-2 .camera {
+  width: 190px;
+  height: 125px;
+  position: absolute;
+  top: 19.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+  border: 7.5px solid #FFA9A9;
+  contain: content;
+  background-color: #FFFFFF;
+}
+
+.container-2 .timer {
+  width: 175px;
+  position: absolute;
+  top: 36.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  background-color: #FFA9A9;
+}
+
+.container-2 .timer p {
+  font-size: 1.5rem;
+  margin: 5px;
+}
+
+.container-2 .cat {
+  width: 190px;
+  height: 190px;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+  border: 7.5px solid #FFA9A9;
+  position: absolute;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container-2 .cat img {
+  width: 190px;
+  height: 190px;
+  position: relative;
+}
+
+.container-2 .cat .cat-1 .cat-2 .cat-3 {
+  display: none;
+}
+
+.container-2 .back-button {
+  align-content: center;
+  width: 100px;
+  position: absolute;
+  top: 81%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFA9A9;
+  border-radius: 50px;
+}
+
+.container-2 .back-button i {
+  font-size: 1.5rem;
+  margin: 5px;
+}
+
+.container-2 .back-button:hover {
+  cursor: pointer;
+  border: 5px solid #FFFFFF;
+}
+
+.container-2 .indicator {
+  position: absolute;
+  top: 92.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFA9A9;
+  border-radius: 25%;
+}
+
+.container-2 .indicator i {
+  font-size: 1.5rem;
+  margin: 15px 16.5px;
+}
+
+.inactive {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+@media only screen and (max-width: 400px) {
+  .container-1 { 
+    background-image: url("/assets/thumbnails_iOS_wallpaper.jpg");
   }
   
-  .container-1 p {
-    margin: 0;
-    padding: 0;
+  .container-2 .paws-background {
+    width: 100%;
+    content: url("/assets/thumbnails_Background_Phone.png");
+  }
+}
+
+@media only screen and (min-width: 401px) {
+  .container-1 { 
+    background-image: url("/assets/thumbnails_iOS_desktop_wallpaper.jpg");
   }
   
-  .container-1 .text {
-    margin-top: 75px;
+  .container-2 .paws-background {
+    width: 100%;
+    content: url("/assets/thumbnails_Background_Desktop.png");
   }
-  
-  .container-1 .text-1 {
-    font-size: 1rem;
-  }
-  
-  .container-1 .text-2 {
-    font-size: 4rem;
-  }
-  
-  .container-1 .design-1 {
-    width: 90px;
-    height: 25px;
-    position: absolute;
-    top: 3%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-    background-color: #000000;
-  }
-  
-  .container-1 .design-2 {
-    width: 110px;
-    height: 5px;
-    position: absolute;
-    top: 98%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-    background-color: #FFFFFF;
-    transition: transform 500ms ease-in-out;
-  }
-  
-  .container-1:hover {
-    cursor: pointer;
-  }
-  
-  .container-1:hover .design-2 {
-    transform: translate(-50%, -10px);
-  }
-  
-  /* Sensor-based Lockscreen */
-  .container-2 {
-    width: 293.76px;
-    height: 607.68px;
-    overflow: hidden;
-    border: 10px solid #000000;
-    border-radius: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFC5C5;
-    color: #FFFFFF;
-    text-align: center;
-  }
-  
-  .container-2 img {
-    width: 260px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .container-2 .design-1 {
-    width: 90px;
-    height: 25px;
-    position: absolute;
-    top: 3%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-    background-color: #000000;
-  }
-  
-  .container-2 .camera {
-    width: 190px;
-    height: 125px;
-    position: absolute;
-    top: 19.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 25px;
-    border: 7.5px solid #FFA9A9;
-    contain: content;
-    background-color: #FFFFFF;
-  }
-  
-  .container-2 .timer {
-    width: 175px;
-    position: absolute;
-    top: 36.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-    background-color: #FFA9A9;
-  }
-  
-  .container-2 .timer p {
-    font-size: 1.5rem;
-    margin: 5px;
-  }
-  
-  .container-2 .cat {
-    width: 190px;
-    height: 190px;
-    background-color: #FFFFFF;
-    border-radius: 25px;
-    border: 7.5px solid #FFA9A9;
-    position: absolute;
-    top: 59%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .container-2 .cat img {
-    width: 190px;
-    height: 190px;
-    position: relative;
-  }
-  
-  .container-2 .cat .cat-1 .cat-2 .cat-3 {
-    display: none;
-  }
-  
-  .container-2 .back-button {
-    align-content: center;
-    width: 100px;
-    position: absolute;
-    top: 81%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFA9A9;
-    border-radius: 50px;
-  }
-  
-  .container-2 .back-button i {
-    font-size: 1.5rem;
-    margin: 5px;
-  }
-  
-  .container-2 .back-button:hover {
-    cursor: pointer;
-    border: 5px solid #FFFFFF;
-  }
-  
-  .container-2 .indicator {
-    position: absolute;
-    top: 92.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFA9A9;
-    border-radius: 25%;
-  }
-  
-  .container-2 .indicator i {
-    font-size: 1.5rem;
-    margin: 15px 16.5px;
-  }
-  
-  .inactive {
-    display: none;
-  }
-  
-  .active {
-    display: block;
-  }
-  
+}
