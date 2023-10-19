@@ -106,6 +106,8 @@ function resetPass(){
   console.log("Reseting pass");
   isUnlocked = false;
   const catContainer = document.getElementById("cat-container");
+  const catChildren = catContainer.children;
+  catChildren[0].remove();
   const catImg = document.createElement("img");
   catImg.src = "../assets/thumbnails_orange_cat.png";
   catImg.setAttribute('id','orangeCat');
