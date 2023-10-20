@@ -5,6 +5,7 @@ body {
     box-sizing: border-box;
   }
   
+<<<<<<< Updated upstream
 /* Lockscreen */
 .container-1 {
   width: 100%;
@@ -195,6 +196,22 @@ body {
 @media only screen and (max-width: 400px) {
   .container-1 { 
     background-image: url("../assets/thumbnails_iOS_wallpaper.jpg");
+=======
+  /* Lockscreen */
+  .container-1 {
+    width: 293.76px;
+    height: 607.68px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../assets/thumbnails_iOS_wallpaper.png");
+    background-size: cover;
+    border-radius: 25px;
+    border: 10px solid #000000;
+    text-align: center;
+    color: #FFFFFF;
+>>>>>>> Stashed changes
   }
   
   .container-2 .paws-background {
