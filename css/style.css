@@ -13,7 +13,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url("../assets/thumbnails_iOS_wallpaper.jpg");
+  background-image: url("../assets/thumbnails_iOS_wallpaper.png");
   background-size: cover;
   text-align: center;
   color: #FFFFFF;
@@ -194,7 +194,7 @@ body {
 
 @media only screen and (max-width: 400px) {
   .container-1 { 
-    background-image: url("../assets/thumbnails_iOS_wallpaper.jpg");
+    background-image: url("../assets/thumbnails_iOS_wallpaper.png");
   }
   
   .container-2 .paws-background {
