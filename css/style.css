@@ -13,7 +13,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url("./assets/thumbnails_iOS_wallpaper.jpg");
+  background-image: url("../assets/thumbnails_iOS_wallpaper.jpg");
   background-size: cover;
   text-align: center;
   color: #FFFFFF;
@@ -194,22 +194,22 @@ body {
 
 @media only screen and (max-width: 400px) {
   .container-1 { 
-    background-image: url("/assets/thumbnails_iOS_wallpaper.jpg");
+    background-image: url("../assets/thumbnails_iOS_wallpaper.jpg");
   }
   
   .container-2 .paws-background {
     width: 100%;
-    content: url("/assets/thumbnails_Background_Phone.png");
+    content: url("../assets/thumbnails_Background_Phone.png");
   }
 }
 
 @media only screen and (min-width: 401px) {
   .container-1 { 
-    background-image: url("/assets/thumbnails_iOS_desktop_wallpaper.jpg");
+    background-image: url("../assets/thumbnails_iOS_desktop_wallpaper.jpg");
   }
   
   .container-2 .paws-background {
     width: 100%;
-    content: url("/assets/thumbnails_Background_Desktop.png");
+    content: url("../assets/thumbnails_Background_Desktop.png");
   }
 }

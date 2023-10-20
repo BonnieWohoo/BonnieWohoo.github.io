@@ -111,7 +111,7 @@ function resetPass(){
       catChildren[0].remove();
     }
     const catImg = document.createElement("img");
-    catImg.src = "./assets/thumbnails_orange_cat.png";
+    catImg.src = "../assets/thumbnails_orange_cat.png";
     catImg.setAttribute('id','orangeCat');
     catImg.setAttribute('class','cat-1');
     catContainer.appendChild(catImg);
@@ -158,7 +158,7 @@ function checkPass(highestExpression){
         catChildren[0].remove();
         // new cat image will be blue
         const catImg = document.createElement("img");
-        catImg.src = "./assets/thumbnails_blue_cat.png";
+        catImg.src = "../assets/thumbnails_blue_cat.png";
         catImg.setAttribute('id','blueCat');
         catImg.setAttribute('class','cat-2');
         catContainer.appendChild(catImg);
@@ -167,7 +167,7 @@ function checkPass(highestExpression){
       if(highestExpression == password.BLUECAT && currentImageId == "BLUECAT"){
         catChildren[0].remove();
         const catImg = document.createElement("img");
-        catImg.src = "./assets/thumbnails_purple_cat.png";
+        catImg.src = "../assets/thumbnails_purple_cat.png";
         catImg.setAttribute('id','purpleCat');
         catImg.setAttribute('class','cat-3');
         catContainer.appendChild(catImg);
@@ -176,7 +176,7 @@ function checkPass(highestExpression){
       if(highestExpression == password.PURPLECAT && currentImageId == "PURPLECAT"){
         catChildren[0].remove();
         const unlockImg = document.createElement("img");
-        unlockImg.src = "./assets/thumbnails_unlock.png";
+        unlockImg.src = "../assets/thumbnails_unlock.png";
         unlockImg.setAttribute('id', 'unlock');
         unlockImg.setAttribute('class','cat');
         const indicator = document.getElementsByClassName("indicator")[0];
